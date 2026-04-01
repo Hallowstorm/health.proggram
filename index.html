@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Raymond's Health Tracker</title>
+    <style>
+        body { background-color: #011601; color: #e8f5e9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; padding: 20px; }
+        .container { background: #011601; width: 450px; text-align: center; border: 2px solid #2d5a27; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); overflow: hidden; }
+        .header { background: #2d5a27; padding: 30px; font-size: 22px; font-weight: bold; letter-spacing: 1px; }
+        form { padding: 25px; }
+        label { display: block; text-align: left; margin: 15px 0 5px; font-size: 11px; font-weight: bold; color: #a5d6a7; text-transform: uppercase; }
+        input { width: 100%; padding: 12px; background: #1b3318; border: 1px solid #4caf50; color: white; border-radius: 6px; box-sizing: border-box; outline: none; }
+        input:focus { border-color: #81c784; background: #244220; }
+        .result-box { background: #0a290a; margin: 20px 0; padding: 20px; border-radius: 8px; color: #fff; font-size: 14px; min-height: 40px; border-left: 5px solid #4caf50; }
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        button { padding: 12px; border: none; border-radius: 6px; color: white; cursor: pointer; font-weight: bold; font-size: 12px; transition: 0.3s; }
+        button:hover { opacity: 0.8; transform: translateY(-2px); }
+        .btn-green { background: #4caf50; }
+        .btn-blue { background: #2196f3; }
+        .btn-red { background: #f44336; grid-column: span 2; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">🌿 RAYMOND'S HEALTH TRACKER</div>
+        <form action="/calculate" method="post">
+            <label>Type of Exercise</label>
+            <input type="text" name="activity" placeholder="e.g. Running">
+            <label>Minutes Exercised</label>
+            <input type="text" name="duration" placeholder="e.g. 30">
+            <label>Calories per Minute</label>
+            <input type="text" name="calories" placeholder="e.g. 10">
+            <label>Glasses of Water</label>
+            <input type="text" name="water" placeholder="e.g. 8">
+            
+            <div class="result-box">{{ result if result else "Ready to track your progress..." }}</div>
+
+            <div class="btn-group">
+                <button type="submit" name="action" value="log" class="btn-green">LOG ACTIVITY</button>
+                <button type="submit" name="action" value="burn" class="btn-green">CALCULATE BURN</button>
+                <button type="submit" name="action" value="water" class="btn-blue">CHECK WATER</button>
+                <button type="reset" class="btn-red">RESET ALL FIELDS</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
